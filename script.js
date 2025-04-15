@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Get quality points for this subject
                 const { points } = getQualityPointsAndGrade(obtainedMarks, totalMarks);
                 
-                // Add to totals - no need to multiply points by credits as points are already calculated based on total marks
+                // Add to totals
                 totalQualityPoints += points;
                 totalCredits += credits;
             }
@@ -258,4 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gpaResult.textContent = gpa;
         cgpaResult.textContent = gpa;
     }
+
+    // Add initial subject
+    addSubject();
 }); 
