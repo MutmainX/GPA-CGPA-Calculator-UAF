@@ -1,5 +1,3 @@
-new
-
 document.addEventListener('DOMContentLoaded', () => {
     const subjectsList = document.getElementById('subjects-list');
     const addSubjectBtn = document.getElementById('add-subject');
