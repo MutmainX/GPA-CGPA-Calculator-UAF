@@ -18,10 +18,24 @@
         
         <div class="subjects-container">
             <div id="subjects-list">
-                <!-- Subjects will be added here dynamically -->
+                <!-- Subject template -->
+                <div class="subject-item">
+                    <input type="text" class="subject-name" placeholder="Subject Name (Optional)">
+                    <button class="btn-delete">×</button>
+                    <div class="marks-group">
+                        <input type="number" class="obtained-marks" placeholder="Obtained Marks" min="0" step="1">
+                        <select class="total-marks">
+                            <option value="20">20</option>
+                            <option value="40">40</option>
+                            <option value="60">60</option>
+                            <option value="80">80</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+                    <div class="grade-display">-</div>
+                </div>
             </div>
-            
-            <button id="add-subject" class="btn">Add Subject</button>
+            <button id="add-subject" class="btn">ADD SUBJECT</button>
         </div>
 
         <div class="results">
