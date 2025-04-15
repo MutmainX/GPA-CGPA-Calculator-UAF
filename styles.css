@@ -107,19 +107,27 @@ h1 {
 }
 
 .btn-delete {
-    background: linear-gradient(45deg, #f44336, #da190b);
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #333333;
+    color: #ff4d4d;
+    border: 1px solid #404040;
+    font-size: 16px;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
 }
 
 .btn-delete:hover {
-    background: linear-gradient(45deg, #da190b, #f44336);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+    background: #ff4d4d;
+    color: white;
+    transform: rotate(90deg);
+    border-color: #ff4d4d;
 }
 
 .results {
@@ -354,4 +362,76 @@ h1 {
 
 .contact-info a:hover::after {
     transform: scaleX(1);
+}
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .university {
+        font-size: 1.1em;
+    }
+
+    .subject-item {
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+    }
+
+    .subject-item input, .subject-item select {
+        padding: 12px;
+        font-size: 16px; /* Better for mobile tapping */
+    }
+
+    .subject-name {
+        grid-column: 1 / -1;
+    }
+
+    .marks-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        grid-column: 1 / -1;
+    }
+
+    .grade-display {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 8px;
+        background: #333333;
+        border-radius: 6px;
+        margin-top: 5px;
+    }
+
+    .btn-delete {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+
+    /* Adjust footer for mobile */
+    .footer {
+        margin: 10px;
+        padding: 20px;
+    }
+
+    .social-links {
+        gap: 20px;
+    }
+
+    .social-links a {
+        width: 50px;
+        height: 50px;
+    }
+
+    .social-icon {
+        width: 25px;
+        height: 25px;
+    }
 } 
