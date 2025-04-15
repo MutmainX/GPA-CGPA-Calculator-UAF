@@ -258,16 +258,4 @@ document.addEventListener('DOMContentLoaded', () => {
         gpaResult.textContent = gpa;
         cgpaResult.textContent = gpa;
     }
-
-    // Attach event listeners to the first subject (already present in the HTML)
-    const firstSubject = document.querySelector('.subject-item');
-    if (firstSubject) {
-        const inputs = firstSubject.querySelectorAll('input, select');
-        inputs.forEach(input => {
-            input.addEventListener('input', () => {
-                updateGrade(firstSubject);
-                calculateGPA();
-            });
-        });
-    }
-});
+}); 
