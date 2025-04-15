@@ -78,6 +78,19 @@ h1 {
     background: #2d2d2d;
     color: #ffffff;
     transition: all 0.3s ease;
+    width: 100%;
+}
+
+/* Specific size for obtained marks input */
+.obtained-marks {
+    width: 100%;
+    max-width: 120px;
+}
+
+/* Specific size for total marks select */
+.total-marks {
+    width: 100%;
+    max-width: 100px;
 }
 
 .subject-item input:focus, .subject-item select:focus {
@@ -385,8 +398,12 @@ h1 {
     }
 
     .subject-item input, .subject-item select {
-        padding: 12px;
-        font-size: 16px; /* Better for mobile tapping */
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .obtained-marks, .total-marks {
+        max-width: none; /* Remove max-width constraints on mobile */
     }
 
     .subject-name {
@@ -395,7 +412,7 @@ h1 {
 
     .marks-group {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: minmax(80px, 1fr) minmax(70px, 1fr);
         gap: 10px;
         grid-column: 1 / -1;
     }
