@@ -4,6 +4,7 @@
 
 #### **How It Works**
 This tool was made exclusively for UAF students to simplify GPA and CGPA calculations. By entering your obtained marks and total marks for each subject, the calculator will precisely compute your GPA and CGPA.
+Access the website [here](https://mutmainx.github.io/GPA-CGPA-Calculator-UAF/).
 
 Features:
 - Works seamlessly on both phones and computers.
@@ -25,7 +26,4 @@ I wanted a solution that would be simple, reliable, and user-focused.
 
 #### **Open Source and Free for Everyone**
 This project is my first step toward building tools that are free, accessible, and serve the community. I strongly believe that code should benefit people, not profit, and that everyone deserves equal access to useful tools. Inspired by the open-source community, this tool aims to make life easier for students without any financial barriers..
-
-Access the website [here](https://mutmainx.github.io/GPA-CGPA-Calculator-UAF/).
-
 ---
