@@ -376,6 +376,47 @@ h1 {
 .contact-info a:hover::after {
     transform: scaleX(1);
 }
+.android-app-section {
+    margin-top: 20px;
+    padding: 20px;
+    background: #333333;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #404040;
+}
+
+.android-app-section h3 {
+    color: #e0e0e0;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.android-app-section .btn {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+.app-download-section {
+    margin-top: 20px;
+    padding: 20px;
+    background: #333333;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #404040;
+}
+
+.app-download-section h3 {
+    color: #e0e0e0;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.app-download-section .btn {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+}
 
 /* Mobile Responsive Styles */
 @media screen and (max-width: 768px) {
