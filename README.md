@@ -24,7 +24,7 @@ I wanted a solution that would be simple, reliable, and user-focused.
 - **Accuracy First:** Only calculates based on the courses you add—no errors from “extra” subjects.
 
 #### **Open Source and Free for Everyone**
-This project is my first step toward building tools that are free, accessible, and serve the community. I strongly believe that code should benefit people, not profit, and that everyone deserves equal access to useful tools. Inspired by the open-source community, this tool aims to make life easier for students without any financial barriers.
+This project is my first step toward building tools that are free, accessible, and serve the community. I strongly believe that code should benefit people, not profit, and that everyone deserves equal access to useful tools. Inspired by the open-source community, this tool aims to make life easier for students without any financial barriers..
 
 Access the website [here](https://mutmainx.github.io/GPA-CGPA-Calculator-UAF/).
 
