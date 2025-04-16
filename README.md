@@ -7,7 +7,8 @@ This tool was made exclusively for UAF students to simplify GPA and CGPA calcula
 
 Access the website [here](https://mutmainx.github.io/GPA-CGPA-Calculator-UAF/).
 or 
-Download app from [here](https://github.com/MutmainX/GPA-CGPA-Calculator-UAF/releases/download/v1.0/Calc-CGPA.apk).
+
+Download app from [here](https://github.com/MutmainX/GPA-CGPA-Calculator-UAF/releases/download/v1.0/Calc-CGPA.apk). or from releases section
 
 Features:
 - Works seamlessly on both phones and computers.
