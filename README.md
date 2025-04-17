@@ -1,14 +1,14 @@
 # GPA-CGPA-Calculator-UAF
 
 ### **Manual GPA and CGPA Calculator for Students at the University of Agriculture, Faisalabad**
-Working on it. New Features Coming Soon...Even Better and Easy for User. In testing phase.
+*Working on it. New Features Coming Soon...Even Better and Easy for User. In testing phase.*
 #### **How It Works**
 This tool was made exclusively for UAF students to simplify GPA and CGPA calculations. By entering your obtained marks and total marks for each subject, the calculator will precisely compute your GPA and CGPA.
 
-Access the website [here](https://mutmainx.github.io/GPA-CGPA-Calculator-UAF/).
+*Access the website [here](https://mutmainx.github.io/GPA-CGPA-Calculator-UAF/).*
 or 
 
-Download app from [here](https://github.com/MutmainX/GPA-CGPA-Calculator-UAF/releases/download/v1.0/Calc-CGPA.apk). or from releases section
+*Download app from [here](https://github.com/MutmainX/GPA-CGPA-Calculator-UAF/releases/download/v1.0/Calc-CGPA.apk). or from releases section*
 
 Features:
 - Works seamlessly on both phones and computers.
