@@ -11,67 +11,115 @@
         <h1>GPA & CGPA Calculator</h1>
         <h2 class="university">University of Agriculture Faisalabad</h2>
         
-        <div class="instructions">
-            <p>For GPA only: Add the marks of all subjects from only the current semester.</p>
-            <p>New Better Features Coming Soon than you think..In testing Phase.</p>
-        </div>
-        
-        <div class="subjects-container">
-            <div id="subjects-list">
-             
-            </div>
-            <button id="add-subject" class="btn">ADD SUBJECT</button>
+        <div class="toggle-section">
+            <button id="gpa-mode-btn" class="btn active">GPA Calculator</button>
+            <button id="cgpa-mode-btn" class="btn">CGPA Calculator</button>
         </div>
 
-        <div class="results">
-            <h2>Results</h2>
-            <div class="result-item">
-                <span>GPA:</span>
-                <span id="gpa-result">0.00</span>
+        <div id="gpa-section">
+            <div class="subjects-container">
+                <div class="subject-count-container">
+                    <input type="number" 
+                           id="subject-count" 
+                           min="1" 
+                           max="80" 
+                           placeholder="Number of Subjects" 
+                           class="subject-count-input">
+                    <button id="add-subject" class="btn-transparent">+ Add</button>
+                </div>
+                <div id="subjects-list"></div>
             </div>
-            <div class="result-item">
-                <span>CGPA:</span>
-                <span id="cgpa-result">0.00</span>
+            <div class="results">
+                <div class="result-item">
+                    <span>GPA:</span>
+                    <span id="gpa-result">0.00</span>
+                </div>
+                <div class="gpa-suggestion">
+                    After calculating GPA of current semester, you can easily calculate CGPA from CGPA Calculator. Check it out!
+                </div>
             </div>
         </div>
-         <div class="app-download-section">
-            <h3>Download the Android App</h3>
-            <a href="https://github.com/MutmainX/GPA-CGPA-Calculator-UAF/releases/download/v1.0/Calc-CGPA.apk" 
-               class="btn" 
-               target="_blank" 
-               rel="noopener noreferrer">
-                Download APK
-            </a>
+
+        <div id="cgpa-section" style="display:none;">
+            <div class="cgpa-calc-box">
+                <h2>CGPA from Semester GPAs</h2>
+                <div class="cgpa-detail-line" style="margin-bottom:10px; color:#b0d4ff; font-size:14px;">
+                    Enter your GPAs below to get CGPA
+                </div>
+                <div id="gpa-list">
+                    <!-- GPA input rows will be added here -->
+                </div>
+                <button id="add-gpa-btn" class="btn-transparent">+ Add</button>
+                <div class="result-item">
+                    <span>CGPA:</span>
+                    <span id="cgpa-sem-result">0.00</span>
+                </div>
+            </div>
+
+            <div class="cgpa-calc-box">
+                <h2>CGPA from previous CGPA and Current GPA</h2>
+                <div class="cgpa-detail-line" style="margin-bottom:10px; color:#b0d4ff; font-size:14px;">
+                    Enter your previous CGPA and number of semesters that was for, then enter your current semester GPA
+                </div>
+                <div class="update-cgpa-fields" style="margin-bottom:8px;">
+                    <input type="number" id="prev-cgpa" step="0.01" min="0" max="4" placeholder="CGPA" style="width:110px; font-size:14px;">
+                    <input type="number" id="prev-semesters" step="1" min="1" placeholder="Semesters" style="width:110px; font-size:14px;">
+                </div>
+                <div class="update-cgpa-fields" style="margin-bottom:10px;">
+                    <input type="number" id="current-gpa" step="0.01" min="0" max="4" placeholder="Current GPA" style="width:170px; font-size:14px;">
+                </div>
+                <div class="result-item">
+                    <span>CGPA:</span>
+                    <span id="updated-cgpa-result">0.00</span>
+                </div>
+            </div>
         </div>
     </div>
 
     <footer class="footer">
-        <p class="developer-credit">Developed with ❤️ by Mutmain</p>
-        
-    
-                <div class="socials-section">
-                    <h3>Connect With Me</h3>
-                    <div class="social-links">
-                        <a href="https://github.com/MutmainX" target="_blank" rel="noopener noreferrer" title="Follow me on GitHub">
-                            <svg class="social-icon github" viewBox="0 0 24 24">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.linkedin.com/in/muhammad-mutmain-iqbal-1b217632b/" target="_blank" rel="noopener noreferrer" title="Connect on LinkedIn">
-                            <svg class="social-icon linkedin" viewBox="0 0 24 24">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </details>
+        <p class="contact-info">
+            For any issues, feedback, or just to connect, feel free to reach out
+        </p>
 
-        <div class="contact-info">
-            <p>For any issues or feedback, open an issue on github repository or contact me on linkedin
+        <div class="social-links">
+            <!-- GitHub -->
+            <a href="https://github.com/MutmainX" target="_blank" rel="noopener noreferrer" title="GitHub">
+                <svg class="social-icon" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/muhammad-mutmain-iqbal-1b217632b/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                <svg class="social-icon" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+            </a>
+            <!-- X (Twitter) -->
+            <a href="https://x.com/MutmainX" target="_blank" rel="noopener noreferrer" title="X (Twitter)">
+                <svg class="social-icon" viewBox="0 0 300 300">
+                    <path d="M178.57 127.45 288.1 0H263.13L169.32 110.08 89.35 0H0l117.13 166.94L0 300.25h24.94l101.85-116.19 84.94 116.19h89.35L178.57 127.45Zm-25.37 26.58L141.48 138.4l-86.85-98.9H93.9l70.16 80.1 11.7 13.34 90.3 103.06h38.62l-74.46-84.95Z"/>
+                </svg>
+            </a>
         </div>
+
+        <!-- Add Android app download section -->
+        <div class="app-download-footer">
+            <span>Get the Android App:</span>
+            <a href="https://github.com/MutmainX/GPA-CGPA-Calculator-UAF/releases/download/v1.0/Calc-CGPA.apk" target="_blank" rel="noopener noreferrer" title="Download Android App">
+                <svg class="social-icon android-icon-footer" viewBox="0 0 24 24">
+                    <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24c-2.86-1.21-6.08-1.21-8.94 0L5.65 5.67c-.19-.29-.58-.38-.87-.2-.28.18-.37.54-.22.83L6.4 9.48C3.3 11.25 1.28 14.44 1 18h22c-.28-3.56-2.3-6.75-5.4-8.52zM7 15.25c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/>
+                </svg>
+            </a>
+        </div>
+
+        <p class="developer-credit">Developed with ❤️‍🩹 by Mutmain</p>
+
+        <p class="publish-info">
+            Published: 13th April 2025 | Version: 2.5
+        </p>
+
     </footer>
 
     <script src="script.js"></script>
 </body>
-</html> 
+</html>
