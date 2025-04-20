@@ -1,27 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
     const subjectsList = document.getElementById('subjects-list');
     const addSubjectBtn = document.getElementById('add-subject');
+    const subjectCountInput = document.getElementById('subject-count');
     const gpaResult = document.getElementById('gpa-result');
     const cgpaResult = document.getElementById('cgpa-result');
-    
-    let subjectCount = 0;
     const MAX_SUBJECTS = 80;
 
-    // Add subject button click handler
+    // Generate subject fields based on user input
     addSubjectBtn.addEventListener('click', () => {
-        if (subjectCount >= MAX_SUBJECTS) {
-            alert('Maximum number of subjects (80) reached!');
+        let count = parseInt(subjectCountInput.value);
+        if (isNaN(count) || count < 1) {
+            alert('Please enter a valid number of subjects.');
             return;
         }
-        addSubject();
+        if (count > MAX_SUBJECTS) {
+            alert('Maximum number of subjects (80) reached!');
+            count = MAX_SUBJECTS;
+        }
+        subjectsList.innerHTML = '';
+        for (let i = 0; i < count; i++) {
+            addSubject(i + 1);
+        }
     });
 
-    function addSubject() {
+    function addSubject(number) {
         const subjectDiv = document.createElement('div');
         subjectDiv.className = 'subject-item';
         subjectDiv.innerHTML = `
             <input type="text" class="subject-name" placeholder="Subject Name (Optional)">
-            <button class="btn-delete">×</button>
+            <span class="subject-number" style="margin-left:8px; background:#333; color:#4d9fff; border-radius:50%; width:28px; height:28px; display:inline-flex; align-items:center; justify-content:center; border:1px solid #404040;">${number}</span>
             <div class="marks-group">
                 <input type="number" class="obtained-marks" placeholder="Obtained Marks" min="0" step="1">
                 <select class="total-marks">
@@ -33,17 +40,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 </select>
             </div>
             <div class="grade-display">-</div>
+            <button class="btn-delete">×</button>
         `;
 
-        // Add delete button functionality
+        // Delete button functionality
         const deleteBtn = subjectDiv.querySelector('.btn-delete');
         deleteBtn.addEventListener('click', () => {
             subjectDiv.remove();
-            subjectCount--;
+            updateSubjectNumbers();
             calculateGPA();
         });
 
-        // Add input event listeners for GPA calculation
+        // Input event listeners for GPA calculation
         const inputs = subjectDiv.querySelectorAll('input, select');
         inputs.forEach(input => {
             input.addEventListener('input', () => {
@@ -53,7 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         subjectsList.appendChild(subjectDiv);
-        subjectCount++;
+    }
+
+    function updateSubjectNumbers() {
+        const subjects = document.querySelectorAll('.subject-item .subject-number');
+        subjects.forEach((el, idx) => {
+            el.textContent = idx + 1;
+        });
     }
 
     function getQualityPointsAndGrade(marks, totalMarks) {
@@ -259,6 +273,108 @@ document.addEventListener('DOMContentLoaded', () => {
         cgpaResult.textContent = gpa;
     }
 
-    // Add initial subject
-    addSubject();
-}); 
+    // CGPA Calculator Section
+    const gpaModeBtn = document.getElementById('gpa-mode-btn');
+    const cgpaModeBtn = document.getElementById('cgpa-mode-btn');
+    const gpaSection = document.getElementById('gpa-section');
+    const cgpaSection = document.getElementById('cgpa-section');
+
+    // Toggle between GPA and CGPA sections
+    gpaModeBtn.addEventListener('click', () => {
+        gpaSection.style.display = '';
+        cgpaSection.style.display = 'none';
+        gpaModeBtn.classList.add('active');
+        cgpaModeBtn.classList.remove('active');
+    });
+
+    cgpaModeBtn.addEventListener('click', () => {
+        gpaSection.style.display = 'none';
+        cgpaSection.style.display = '';
+        cgpaModeBtn.classList.add('active');
+        gpaModeBtn.classList.remove('active');
+    });
+
+    // CGPA from Semester GPAs functionality
+    const gpaList = document.getElementById('gpa-list');
+    const addGpaBtn = document.getElementById('add-gpa-btn');
+    const cgpaSemResult = document.getElementById('cgpa-sem-result');
+
+    function addGpaInput() {
+        const row = document.createElement('div');
+        row.className = 'gpa-input-row';
+        row.innerHTML = `
+            <input type="number" step="0.01" min="0" max="4" class="gpa-value" placeholder="GPA">
+            <button class="btn-delete" title="Remove">×</button>
+        `;
+        
+        const input = row.querySelector('input');
+        input.addEventListener('input', updateCgpaFromSemesters);
+        
+        row.querySelector('.btn-delete').addEventListener('click', () => {
+            row.remove();
+            updateCgpaFromSemesters();
+        });
+        
+        gpaList.appendChild(row);
+    }
+
+    function updateCgpaFromSemesters() {
+        const gpaInputs = gpaList.querySelectorAll('.gpa-value');
+        let sum = 0, count = 0;
+        
+        gpaInputs.forEach(input => {
+            const val = parseFloat(input.value);
+            if (!isNaN(val) && val >= 0 && val <= 4) {
+                sum += val;
+                count++;
+            }
+        });
+        
+        cgpaSemResult.textContent = count > 0 ? (sum / count).toFixed(3) : '0.00';
+    }
+
+    addGpaBtn.addEventListener('click', addGpaInput);
+
+    // CGPA from previous CGPA and current GPA functionality
+    const prevCgpa = document.getElementById('prev-cgpa');
+    const prevSemesters = document.getElementById('prev-semesters');
+    const currentGpa = document.getElementById('current-gpa');
+    const updatedCgpaResult = document.getElementById('updated-cgpa-result');
+
+    [prevCgpa, prevSemesters, currentGpa].forEach(input => {
+        input.addEventListener('input', updateCgpaFromPrevious);
+    });
+
+    function updateCgpaFromPrevious() {
+        const cgpa = parseFloat(prevCgpa.value);
+        const semesters = parseInt(prevSemesters.value);
+        const gpa = parseFloat(currentGpa.value);
+
+        if (!isNaN(cgpa) && !isNaN(semesters) && !isNaN(gpa) &&
+            cgpa >= 0 && cgpa <= 4 && semesters > 0 && gpa >= 0 && gpa <= 4) {
+            const updatedCgpa = ((cgpa * semesters) + gpa) / (semesters + 1);
+            updatedCgpaResult.textContent = updatedCgpa.toFixed(3);
+        } else {
+            updatedCgpaResult.textContent = '0.00';
+        }
+    }
+
+    // Add initial GPA input field
+    addGpaInput();
+
+    // Add this to your existing DOMContentLoaded event listener
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownHeader = document.querySelector('.dropdown-header');
+
+    dropdownHeader.addEventListener('click', () => {
+        dropdown.classList.toggle('active');
+    });
+
+    // Add inside DOMContentLoaded event listener
+    const appDownloadSection = document.querySelector('.app-download-section');
+    const appDownloadHeader = appDownloadSection.querySelector('.dropdown-header');
+
+    appDownloadHeader.addEventListener('click', () => {
+        appDownloadSection.classList.toggle('active');
+    });
+});
